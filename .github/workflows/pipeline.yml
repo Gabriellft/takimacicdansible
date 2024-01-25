@@ -36,4 +36,4 @@ jobs:
         echo "gabriel.laffitte.takima.cloud" | sudo tee -a /etc/ansible/hosts
 
     - name: Run Ansible Playbook
-      run: ansible-playbook -i inventory.yml deploy-app.yml
+      run: ansible-playbook -i inventories/setup.yml deploy-app.yml
