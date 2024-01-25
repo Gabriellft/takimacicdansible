@@ -26,6 +26,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y ansible
 
+    - name: Create Ansible Inventory Directory and File
+      run: |
+        sudo mkdir -p /etc/ansible
+        sudo touch /etc/ansible/hosts
+
     - name: Add Host to Ansible Inventory
       run: |
         echo "gabriel.laffitte.takima.cloud" | sudo tee -a /etc/ansible/hosts
