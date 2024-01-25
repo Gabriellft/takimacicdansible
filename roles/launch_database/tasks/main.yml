@@ -1,0 +1,10 @@
+- name: Run Database Container
+  docker_container:
+    name: my-db
+    image: gabriellft/tp-devops-database:latest
+    networks:
+      - name: my-network
+    volumes:
+      - db-volume:/var/lib/postgresql/data
+  vars:
+    ansible_python_interpreter: /usr/bin/python3

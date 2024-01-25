@@ -1,0 +1,10 @@
+- name: Run frontend Service
+  docker_container:
+    name: my-front
+    image: gabriellft/tp-devops-devops-front-main:latest
+    recreate: true
+    pull: true
+    networks:
+      - name: my-network
+  vars:
+    ansible_python_interpreter: /usr/bin/python3

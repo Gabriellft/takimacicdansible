@@ -1,0 +1,12 @@
+- name: Run HTTPD Proxy
+  docker_container:
+    name: httpd
+    image: gabriellft/tp-devops-httpd:latest
+    recreate: true
+    pull: true
+    ports:
+      - "80:80"
+    networks:
+      - name: my-network
+  vars:
+    ansible_python_interpreter: /usr/bin/python3

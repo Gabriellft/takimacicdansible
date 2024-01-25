@@ -1,0 +1,38 @@
+- name: Install required packages
+  yum:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - device-mapper-persistent-data
+    - lvm2
+
+- name: Add Docker repository
+  command: sudo yum-config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: Install Docker
+  yum:
+    name: docker-ce
+    state: present
+
+- name: Start and enable Docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Install Python 3 Pip (if not present)
+  yum:
+    name: python3-pip
+    state: present
+
+- name: Upgrade Python 3 Pip to the latest version
+  pip:
+    name: pip
+    state: latest
+    executable: pip3
+
+- name: Install Docker SDK for Python 3
+  pip:
+    name: docker
+    state: present
+    executable: pip3
