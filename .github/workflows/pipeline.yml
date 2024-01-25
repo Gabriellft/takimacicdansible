@@ -26,5 +26,9 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y ansible
 
+    - name: Add Host to Ansible Inventory
+      run: |
+        echo "gabriel.laffitte.takima.cloud" | sudo tee -a /etc/ansible/hosts
+
     - name: Run Ansible Playbook
-      run: ansible-playbook -i inventory.yml playbook.yml
+      run: ansible-playbook -i inventory.yml deploy-app.yml
